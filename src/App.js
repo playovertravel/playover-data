@@ -16,11 +16,10 @@ const data = {
 
 function App() {
   return (
-    <Container className="App" maxWidth="lg" >
+    <Container className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <p>Hey team, here's the app blah blah</p>
     </Container>
   );
 }
