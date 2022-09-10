@@ -1,24 +1,25 @@
 import logo from './playover.png';
 import './App.css';
+import Container from '@mui/material/Container';
+
+const data = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    timeToSpend: 0,
+    transportationMethod: "",
+    notes: "",
+    placesData: {},
+}
 
 function App() {
   return (
-    <div className="App">
+    <Container className="App" maxWidth="lg">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload, baby.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
-    </div>
+      <p>Hey team, here's the app blah blah</p>
+    </Container>
   );
 }
 
