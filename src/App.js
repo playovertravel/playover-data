@@ -1,6 +1,6 @@
 import logo from './playover.png';
 import './App.css';
-import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 /*
 const data = {
@@ -20,6 +20,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
+      <Typography variant="h2">Hey team! Search for a place just like you would with Google Maps</Typography>
     </div>
   );
 }
