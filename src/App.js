@@ -2,6 +2,7 @@ import logo from './playover.png';
 import './App.css';
 import Container from '@mui/material/Container';
 
+/*
 const data = {
     firstName: "",
     lastName: "",
@@ -11,10 +12,11 @@ const data = {
     notes: "",
     placesData: {},
 }
+*/
 
 function App() {
   return (
-    <Container className="App" maxWidth="lg">
+    <Container className="App" maxWidth="lg" >
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
