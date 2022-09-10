@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/React-Deploy/static/css/main.073c9b0a.css",
-    "main.js": "/React-Deploy/static/js/main.954a1e9f.js",
-    "static/js/787.b35e3ed4.chunk.js": "/React-Deploy/static/js/787.b35e3ed4.chunk.js",
-    "static/media/logo.svg": "/React-Deploy/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/React-Deploy/index.html",
-    "main.073c9b0a.css.map": "/React-Deploy/static/css/main.073c9b0a.css.map",
-    "main.954a1e9f.js.map": "/React-Deploy/static/js/main.954a1e9f.js.map",
-    "787.b35e3ed4.chunk.js.map": "/React-Deploy/static/js/787.b35e3ed4.chunk.js.map"
+    "main.css": "/playover-data/static/css/main.073c9b0a.css",
+    "main.js": "/playover-data/static/js/main.2495003c.js",
+    "static/js/787.b35e3ed4.chunk.js": "/playover-data/static/js/787.b35e3ed4.chunk.js",
+    "static/media/logo.svg": "/playover-data/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/playover-data/index.html",
+    "main.073c9b0a.css.map": "/playover-data/static/css/main.073c9b0a.css.map",
+    "main.2495003c.js.map": "/playover-data/static/js/main.2495003c.js.map",
+    "787.b35e3ed4.chunk.js.map": "/playover-data/static/js/787.b35e3ed4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.954a1e9f.js"
+    "static/js/main.2495003c.js"
   ]
 }
