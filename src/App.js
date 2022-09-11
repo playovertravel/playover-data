@@ -18,9 +18,16 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import { withStyles } from '@mui/material/styles';
 
 import { db } from './firebaseConfig.js';
 import { collection, addDoc } from 'firebase/firestore';
+
+const styles = {
+  input: {
+    color: 'white',
+  }
+}
 
 function CustomizedInputBase() {
   return (
@@ -109,18 +116,43 @@ function App() {
           }}
         >
           <TextField
+            sx={{
+              "& .MuiInputLabel-root": {color: 'white', paddingLeft: 2, paddingBottom: 2},//styles the label
+              "& .MuiInput-root": {
+                "& > fieldset": { color: "white", padding: 2},
+              },
+              "& .MuiInput-root:hover": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              },
+              "& .MuiInput-root:focus": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              }
+            }}
             id="firstName" 
             name="firstName"
             label="First Name" 
-            variant="outlined"
             margin="normal"
+            variant="standard"
             color="primary"
+            size="medium"
             fullWidth
             value={data.firstName}
             onChange={(e) => onChangeInput(e)}
             required
           />
           <TextField
+            sx={{
+              "& .MuiInputLabel-root": {color: 'white', paddingLeft: 2, paddingBottom: 2},//styles the label
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": { borderColor: "white", padding: 2},
+              },
+              "& .MuiOutlinedInput-root:hover": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              },
+              "& .MuiOutlinedInput-root:focus": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              }
+            }}
             id="lastName" 
             name="lastName"
             label="Last Name" 
@@ -132,6 +164,18 @@ function App() {
             required
           />
           <TextField
+            sx={{
+              "& .MuiInputLabel-root": {color: 'white', paddingLeft: 2, paddingBottom: 2},//styles the label
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": { borderColor: "white", padding: 2},
+              },
+              "& .MuiOutlinedInput-root:hover": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              },
+              "& .MuiOutlinedInput-root:focus": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              }
+            }}
             id="email" 
             name="email"
             label="Email" 
@@ -143,6 +187,18 @@ function App() {
             required
           />
           <TextField
+            sx={{
+              "& .MuiInputLabel-root": {color: 'white', paddingLeft: 2, paddingBottom: 2},//styles the label
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": { borderColor: "white", padding: 2},
+              },
+              "& .MuiOutlinedInput-root:hover": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              },
+              "& .MuiOutlinedInput-root:focus": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              }
+            }}
             id="timeToSpend"
             name="timeToSpend"
             label="Minimum Time To Spend"
@@ -160,6 +216,9 @@ function App() {
           <FormControl sx={{ m: 1, minWidth: 650 }}>
             <InputLabel id="transportationTypeSelect">Transportation Type</InputLabel>
             <Select
+              sx={{
+                "& .MuiSelect-select": {color: 'white', borderColor: 'white'},//styles the label
+              }}
               labelId="transportationType"
               id="transportationType"
               name="transportationType"
@@ -178,6 +237,18 @@ function App() {
             <FormHelperText>With label + helper text</FormHelperText>
           </FormControl>
           <TextField
+            sx={{
+              "& .MuiInputLabel-root": {color: 'white', paddingLeft: 2, paddingBottom: 2},//styles the label
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": { borderColor: "white", padding: 2},
+              },
+              "& .MuiOutlinedInput-root:hover": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              },
+              "& .MuiOutlinedInput-root:focus": {
+                "& > fieldset": { borderColor: "white", padding: 2}
+              }
+            }}
             id="notes" 
             label="Notes" 
             name="notes"
