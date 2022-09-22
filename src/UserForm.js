@@ -14,21 +14,29 @@ import { db } from './firebaseConfig.js';
 import { collection, addDoc } from 'firebase/firestore';
 
 export default function UserForm({ placesData }) {
+  const validateItem = (item) => {
+    if (item != null) {
+      return item
+    } else {
+      return ""
+    }
+  }
+
   const [data, setData] = useState({
-    "business_state": placesData.business_status,
-    "phone_number": placesData.formatted_phone_number,
-    "latitude": placesData.geometry.location.lat(),
-    "longitude": placesData.geometry.location.lng(),
-    "name": placesData.name,
-    "hours": placesData.opening_hours.weekday_text, // this is an array
-    "id": placesData.place_id,
-    "price_level": placesData.price_level,
-    "rating": placesData.rating,
-    "reviews": placesData.reviews, // this is an array of review objects
-    "categories": placesData.types, // this is an array
-    "website": placesData.website,
+    "business_state": validateItem(placesData.business_status),
+    "phone_number": validateItem(placesData.formatted_phone_number),
+    "latitude": placesData.geometry != null ? placesData.geometry.location.lat() : 0,
+    "longitude": placesData.geometry != null ? placesData.geometry.location.lng() : 0,
+    "name": validateItem(placesData.name),
+    "hours": placesData.opening_hours != null ? placesData.opening_hours.weekday_text : [], // this is an array
+    "id": validateItem(placesData.place_id),
+    "price_level": validateItem(placesData.price_level),
+    "rating": validateItem(placesData.rating),
+    "reviews": placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
+    "categories": placesData.types != null ? placesData.types : [], // this is an array
+    "website": validateItem(placesData.website),
     "photos": placesData.photos.map((po) => po.getUrl()),
-    "google_maps_url": placesData.url
+    "google_maps_url": validateItem(placesData.url),
   });
   const [userData, setUserData] = useState({});
 

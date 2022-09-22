@@ -17,6 +17,7 @@ export default function AutoCompleteForm({ onChangeData }) {
     fields: [
       "business_status", 
       "geometry.location", 
+      "geometry.viewport",
       "photos", 
       "opening_hours", 
       "website", 
