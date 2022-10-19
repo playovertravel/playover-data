@@ -75,6 +75,7 @@ export default function UserForm({ placesData }) {
       const userRef = await addDoc(collection(db, "user-data"), userData)
       console.log("Document written with id: ", docRef.id);
       console.log("Document written with id: ", userRef.id);
+      alert("Successfully wrote document with id: ", docRef.id);
     } catch(e) {
       console.error("Error adding document: ", e);
     }
