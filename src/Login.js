@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Link, useNavigate } from "react-router-dom";
+import { Form, Alert } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -25,7 +26,9 @@ export default function SignIn() {
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <div>
+    {error && <Alert variant="danger">{error}</Alert>}
+    <Form onSubmit={onSubmitForm}>
       <Box mt={5}>
         <Typography variant="h5" component="h2" color="white">
           Login
@@ -76,6 +79,7 @@ export default function SignIn() {
             Login
           </Button>
       </Box>
-    </form>
+    </Form>
+    </div>
   )
 }
