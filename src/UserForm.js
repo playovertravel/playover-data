@@ -8,36 +8,20 @@ import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 // Firebase stuff
 import { db } from './firebaseConfig.js';
 import { collection, addDoc } from 'firebase/firestore';
 
-export default function UserForm({ placesData }) {
-  const validateItem = (item) => {
-    if (item != null) {
-      return item
-    } else {
-      return ""
-    }
-  }
-
-  const [data, setData] = useState({
-    "business_state": validateItem(placesData.business_status),
-    "phone_number": validateItem(placesData.formatted_phone_number),
-    "latitude": placesData.geometry != null ? placesData.geometry.location.lat() : 0,
-    "longitude": placesData.geometry != null ? placesData.geometry.location.lng() : 0,
-    "name": validateItem(placesData.name),
-    "hours": placesData.opening_hours != null ? placesData.opening_hours.weekday_text : [], // this is an array
-    "id": validateItem(placesData.place_id),
-    "price_level": validateItem(placesData.price_level),
-    "rating": validateItem(placesData.rating),
-    "reviews": placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
-    "categories": placesData.types != null ? placesData.types : [], // this is an array
-    "website": validateItem(placesData.website),
-    "photos": placesData.photos.map((po) => po.getUrl()),
-    "google_maps_url": validateItem(placesData.url),
-  });
+export default function UserForm() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const placesData = location.state;
+  //console.log(location.state);
+  
+  const [data, setData] = useState(placesData);
   const [userData, setUserData] = useState({});
 
 
@@ -82,6 +66,7 @@ export default function UserForm({ placesData }) {
   }
 
   return (
+    <div>
     <form onSubmit={onSubmitForm}>
       <Box mt={5}>
         <Typography variant="h5" component="h2" color="white">
@@ -190,17 +175,18 @@ export default function UserForm({ placesData }) {
           type="submit"
           variant="contained"
         >
-          Submit that shit
-        </Button>
-        <Button
-          sx={{ marginLeft: 2 }}
-          type="submit"
-          variant="contained"
-          onClick={() => window.location.reload}
-        >
-          Start over
+          Submit
         </Button>
       </Box>
     </form>
+        <Button
+          sx={{ marginLeft: 2, marginBottom: 2 }}
+          type="submit"
+          variant="contained"
+          onClick={() => navigate("/playover-data/placesform")}
+        >
+          Back to beginning
+        </Button>
+    </div>
   );
 }

@@ -7,8 +7,19 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AutoCompleteForm from './AutoCompleteForm';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const PlacesInfoBox = ({ placesData, displayUserForm }) => {
+  const navigate = useNavigate();
+
+  const validateItem = (item) => {
+    if (item != null) {
+      return item
+    } else {
+      return ""
+    }
+  }
+
   return (
     <>
       <Typography variant="h5" component="h2" color="white">
@@ -79,7 +90,22 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
             <Button
               type="submit"
               variant="contained"
-              onClick={() => displayUserForm()}
+              onClick={() => navigate("/playover-data/userform", {state: {
+                "business_state": validateItem(placesData.business_status),
+                "phone_number": validateItem(placesData.formatted_phone_number),
+                "latitude": placesData.geometry != null ? placesData.geometry.location.lat() : 0,
+                "longitude": placesData.geometry != null ? placesData.geometry.location.lng() : 0,
+                "name": validateItem(placesData.name),
+                "hours": placesData.opening_hours != null ? placesData.opening_hours.weekday_text : [], // this is an array
+                "id": validateItem(placesData.place_id),
+                "price_level": validateItem(placesData.price_level),
+                "rating": validateItem(placesData.rating),
+                "reviews": placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
+                "categories": placesData.types != null ? placesData.types : [], // this is an array
+                "website": validateItem(placesData.website),
+                "photos": placesData.photos.map((po) => po.getUrl()),
+                "google_maps_url": validateItem(placesData.url),
+              }})}
             >
               Indeed
             </Button>
@@ -128,9 +154,13 @@ export default function PlacesInfoForm() {
     { 
       displayBox ? <PlacesInfoBox placesData={placesData} displayUserForm={onDisplayUserForm} /> : false 
     }
-    {
-      displayUserForm ? <UserForm placesData={placesData} /> : false
-    }
     </div>
   );
 }
+
+/*
+
+    {
+      displayUserForm ? <UserForm placesData={placesData} /> : false
+    }
+    */

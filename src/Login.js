@@ -19,7 +19,7 @@ export default function SignIn() {
     setError("");
     try {
       await logIn(email, password);
-      navigate("/playover-data/submit");
+      navigate("/playover-data/placesform");
     } catch (err) {
       setError(err.message);
     }
