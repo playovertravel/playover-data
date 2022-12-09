@@ -103,7 +103,7 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
                 "reviews": placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
                 "categories": placesData.types != null ? placesData.types : [], // this is an array
                 "website": validateItem(placesData.website),
-                "photos": placesData.photos.map((po) => po.getUrl()),
+                "photos": placesData.photos.map((po) => po.getUrl())[0],
                 "google_maps_url": validateItem(placesData.url),
               }})}
             >
