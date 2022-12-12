@@ -19,7 +19,7 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
       return ""
     }
   }
-	console.log("PLACES DATA PHOTO URL: ", placesData.photos[0].getUrl());
+	console.log("complete place data object: ", placesData);
 
   return (
     <>
@@ -42,6 +42,7 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
         <p>Name: {placesData.name}</p>
         <p>Phone Number: {placesData.formatted_phone_number}</p>
         <p>Website: {placesData.website}</p>
+	<p>Places Photo URL: {placesData.photos[0].getUrl()}</p>
         <p>Price level: {placesData.price_level}</p>
         <Typography variant="h5" component="h3">Geodata</Typography>
         {
