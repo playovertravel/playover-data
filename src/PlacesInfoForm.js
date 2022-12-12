@@ -19,6 +19,7 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
       return ""
     }
   }
+	console.log("PLACES DATA PHOTO URL: ", placesData.photos[0].getUrl());
 
   return (
     <>
@@ -93,8 +94,9 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
               onClick={() => navigate("/playover-data/userform", {state: {
                 "business_state": validateItem(placesData.business_status),
                 "phone_number": validateItem(placesData.formatted_phone_number),
-                "latitude": placesData.geometry != null ? placesData.geometry.location.lat() : 0,
-                "longitude": placesData.geometry != null ? placesData.geometry.location.lng() : 0,
+//               "latitude": placesData.geometry != null ? placesData.geometry.location.lat() : 0,
+//               "longitude": placesData.geometry != null ? placesData.geometry.location.lng() : 0,
+		"locationData": placesData.geometry,
                 "name": validateItem(placesData.name),
                 "hours": placesData.opening_hours != null ? placesData.opening_hours.weekday_text : [], // this is an array
                 "id": validateItem(placesData.place_id),
@@ -103,7 +105,7 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
                 "reviews": placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
                 "categories": placesData.types != null ? placesData.types : [], // this is an array
                 "website": validateItem(placesData.website),
-                "photos": placesData.photos.map((po) => po.getUrl())[0],
+                "photos": placesData.photos.map((po) => po.getUrl())[0], // this needs fixing ASAP. These photo URLs are not constant!
                 "google_maps_url": validateItem(placesData.url),
               }})}
             >

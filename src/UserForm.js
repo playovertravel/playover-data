@@ -19,7 +19,7 @@ export default function UserForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const placesData = location.state;
-  //console.log(location.state);
+  console.log(location.state);
   
   const [data, setData] = useState(placesData);
   const [userData, setUserData] = useState({});
@@ -55,7 +55,7 @@ export default function UserForm() {
     event.preventDefault()
 
     try {
-      const docRef = await addDoc(collection(db, "playover-data"), data);
+      const docRef = await addDoc(collection(db, "playover-places-data"), data);
       const userRef = await addDoc(collection(db, "user-data"), userData)
       console.log("Document written with id: ", docRef.id);
       console.log("Document written with id: ", userRef.id);
