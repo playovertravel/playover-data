@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import PlacesInfoForm from './PlacesInfoForm';
 import UserForm from './UserForm';
-import PaymentForm from './PaymentForm';
 import Login from './Login';
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -28,12 +27,6 @@ function App() {
               <ProtectedRoute>
                 <UserForm />
               </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/playover-data/payment" 
-            element={
-                <PaymentForm paymentClientToken={"thisisatestoken"} />
             } 
           />
         </Routes>

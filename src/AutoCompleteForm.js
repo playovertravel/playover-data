@@ -16,12 +16,10 @@ export default function AutoCompleteForm({ onChangeData }) {
     //componentRestrictions: { country: "us" },
     fields: [
       "business_status", 
-      "geometry.location", 
-      "geometry.viewport",
+      "geometry", 
       "photos", 
       "opening_hours", 
       "website", 
-      "geometry", 
       "icon", 
       "name", 
       "place_id", 
@@ -41,7 +39,7 @@ export default function AutoCompleteForm({ onChangeData }) {
     // get the actual data
     autoCompleteRef.current.addListener("place_changed", async () => {
       const place = await autoCompleteRef.current.getPlace();
-      console.log("here's your data: ", place);
+      console.log("from AutoCompleteForm: ", place);
       onChangeData(place);
     });
   }, [])
