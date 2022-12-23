@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "./playover.png";
-import UserForm from "./UserForm";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,15 +8,13 @@ import AutoCompleteForm from "./AutoCompleteForm";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
-const PlacesInfoBox = ({ placesData, displayUserForm }) => {
+const PlacesInfoBox = ({ placesData }) => {
   const navigate = useNavigate();
 
   const randomRating = (min, max) => {
-    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  console.log(randomRating(3, 5));
   const validateItem = (item) => {
     if (item != null) {
       return item;
@@ -27,6 +24,8 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
   };
   console.log("from PlacesInfoBox: ", placesData);
   /*
+  Perhaps this would work as a firebase function
+
 	fetch(placesData.photos[0].getUrl()).then((r) => {
 		if (r.redirected) {
 			console.log("redirected to: ", r.url, r.redirected)
@@ -137,8 +136,11 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
                     categories:
                       placesData.types != null ? placesData.types : [], // this is an array
                     minimumTime: 1,
+                    photos: [],
                     recommendedTransportation: "rideshare",
-                    rating: 4,
+                    rating: randomRating(3, 5),
+                    reviews:
+                      placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
                   },
                 })
               }
@@ -160,16 +162,10 @@ const PlacesInfoBox = ({ placesData, displayUserForm }) => {
 export default function PlacesInfoForm() {
   const [placesData, setPlacesData] = useState({});
   const [displayBox, setDisplayBox] = useState(false);
-  const [displayUserForm, setDisplayUserForm] = useState(false);
 
   const onSetPlacesData = (data) => {
     setPlacesData(data);
     setDisplayBox(true);
-  };
-
-  const onDisplayUserForm = () => {
-    setDisplayUserForm(true);
-    setDisplayBox(false);
   };
 
   return (
@@ -183,14 +179,7 @@ export default function PlacesInfoForm() {
           <AutoCompleteForm onChangeData={onSetPlacesData} />
         </Box>
       </Container>
-      {displayBox ? (
-        <PlacesInfoBox
-          placesData={placesData}
-          displayUserForm={onDisplayUserForm}
-        />
-      ) : (
-        false
-      )}
+      {displayBox ? <PlacesInfoBox placesData={placesData} /> : false}
     </div>
   );
 }
