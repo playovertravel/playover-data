@@ -119,8 +119,8 @@ export default function UserForm() {
             required
           />
           <TextField
-            id="ambassadorLayoverLength"
-            name="ambassadorLayoverLength"
+            id="layoverLength"
+            name="layoverLength"
             label="Your layover length"
             type="number"
             margin="normal"

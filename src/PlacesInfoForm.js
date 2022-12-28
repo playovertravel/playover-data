@@ -118,7 +118,7 @@ const PlacesInfoBox = ({ placesData }) => {
                     name: validateItem(placesData.name),
                     placeId: validateItem(placesData.place_id),
                     id: validateItem(placesData.place_id),
-                    ambassadorLayoverLength: 1,
+                    layoverLength: 1,
                     difficulty: 1,
                     isOutsideAirport: true,
                     location: {
