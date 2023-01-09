@@ -22,7 +22,9 @@ const PlacesInfoBox = ({ placesData }) => {
       return "";
     }
   };
-  console.log("from PlacesInfoBox: ", placesData);
+  // Consider trying this to just download the image from the .getUrl() function
+  // If that works, then perhaps you could just upload the blob to Firebase Storage and use that
+  // Instead of using the place ID to make a new request to .getUrl() every time: https://onlinewebtutorblog.com/how-to-download-image-from-url-in-node-js-tutorial/
   /*
   Perhaps this would work as a firebase function
 
@@ -32,6 +34,7 @@ const PlacesInfoBox = ({ placesData }) => {
 		}
 	})
 	*/
+  console.log("The photo: ", placesData.photos[0].photo_reference);
 
   return (
     <>
@@ -115,8 +118,8 @@ const PlacesInfoBox = ({ placesData }) => {
               onClick={() =>
                 navigate("/playover-data/userform", {
                   state: {
-                    name: validateItem(placesData.name),
-                    placeId: validateItem(placesData.place_id),
+                    name: validateItem(placesData.name), /* This will need to be fetched with the place ID in the app */
+                    //placeId: validateItem(placesData.place_id),
                     id: validateItem(placesData.place_id),
                     layoverLength: 1,
                     difficulty: 1,
@@ -135,12 +138,12 @@ const PlacesInfoBox = ({ placesData }) => {
                     },
                     categories:
                       placesData.types != null ? placesData.types : [], // this is an array
-                    minimumTime: 1,
-                    photos: [],
-                    recommendedTransportation: "rideshare",
+                    timeToSpend: 1,
+                    photos: "",/*placesData.photos.map((po) => po.getUrl()), // this needs fixing ASAP. These photo URLs are not constant!*/
+                    transportationType: "rideshare",
                     rating: randomRating(3, 5),
-                    reviews:
-                      placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects
+                    reviews: [{}], // {id: 0, userId: ji4th409hg, text: ""}
+                	/*placesData.reviews != null ? placesData.reviews : [], // this is an array of review objects */
                   },
                 })
               }

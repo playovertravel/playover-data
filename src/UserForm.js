@@ -52,7 +52,7 @@ export default function UserForm() {
     event.preventDefault();
 
     try {
-      const docRef = await addDoc(collection(db, "playovers"), data);
+      const docRef = await addDoc(collection(db, "playover-data"), data);
       const userRef = await addDoc(collection(db, "user-data"), userData);
       console.log("Document written with id: ", docRef.id);
       console.log("Document written with id: ", userRef.id);
